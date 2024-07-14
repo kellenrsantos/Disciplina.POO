@@ -1,0 +1,60 @@
+abstract class Calculadora {
+    public abstract double soma(double a, double b);
+    public abstract double subtracao(double a, double b);
+    public abstract double multiplicacao(double a, double b);
+    public abstract double divisao(double a, double b);
+}
+
+class CalculadoraCompleta extends Calculadora {
+    
+    public double soma(double a, double b) {
+        return a + b;
+    }
+
+  
+    public double subtracao(double a, double b) {
+        return a - b;
+    }
+
+    
+    public double multiplicacao(double a, double b) {
+        return a * b;
+    }
+
+
+    public double divisao(double a, double b) {
+        if (b != 0) {
+            return a / b;
+        } else {
+            throw new IllegalArgumentException("Divisão por zero não é permitida.");
+        }
+    }
+
+    public double raizQuadrada(double a) {
+        if (a >= 0) {
+            return Math.sqrt(a);
+        } else {
+            throw new IllegalArgumentException("Não é possível calcular a raiz quadrada de um número negativo.");
+        }
+    }
+
+    public double potenciaAoQuadrado(double a) {
+        return a * a;
+    }
+
+    public static void main(String[] args) {
+        CalculadoraCompleta calc = new CalculadoraCompleta();
+
+        // Teste das operações básicas
+        System.out.println("Operações básicas:");
+        System.out.println("Soma: 5 + 3 = " + calc.soma(5, 3));
+        System.out.println("Subtração: 5 - 3 = " + calc.subtracao(5, 3));
+        System.out.println("Multiplicação: 5 * 3 = " + calc.multiplicacao(5, 3));
+        System.out.println("Divisão: 6 / 3 = " + calc.divisao(6, 3));
+
+        // Teste das operações avançadas
+        System.out.println("\nOperações avançadas:");
+        System.out.println("Raiz quadrada de 16: " + calc.raizQuadrada(16));
+        System.out.println("Potência ao quadrado de 4: " + calc.potenciaAoQuadrado(4));
+    }
+}
